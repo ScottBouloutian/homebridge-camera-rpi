@@ -7,12 +7,10 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:6.10
 # Packaged dependencies
 RUN apt-get update && apt-get install -y libraspberrypi-bin
 
-# Setup pi camera
-RUN modprobe bcm2835-v4l2
-
-# Install homebridge dependencies
+# Install dependencies
 RUN apt-get install -y python libudev-dev
 RUN apt-get install -y avahi-daemon avahi-discover libnss-mdns libavahi-compat-libdnssd-dev
+RUN apt-get install -y v4l-utils
 
 # Install ffmpeg
 RUN apt-get install -y libssl-dev libcurl4-openssl-dev libjpeg-dev libx264-142 libavcodec56 libavformat56 libswscale3 libpq5
