@@ -149,8 +149,8 @@ Camera.prototype.handleStreamRequest = function (request) {
   let sessionIdentifier = this.hap.uuid.unparse(sessionID)
 
   if (requestType === 'start' && this.pendingSessions[sessionIdentifier]) {
-    var width = 1280
-    var height = 720
+    var width = 1920
+    var height = 1080
     var fps = 30
     var bitrate = 300
 
