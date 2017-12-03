@@ -7,6 +7,10 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:6.10
 # Packaged dependencies
 RUN apt-get update
 
+# Install homebridge dependencies
+RUN apt-get install -y python libudev-dev
+RUN apt-get install -y avahi-daemon avahi-discover libnss-mdns libavahi-compat-libdnssd-dev
+
 # Install ffmpeg
 RUN apt-get install -y libssl-dev libcurl4-openssl-dev libjpeg-dev libx264-142 libavcodec56 libavformat56 libswscale3 libpq5
 RUN wget https://github.com/ccrisan/motioneye/wiki/precompiled/ffmpeg_3.1.1-1_armhf.deb
