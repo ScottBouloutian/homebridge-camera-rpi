@@ -2,6 +2,7 @@
 const minimist = require('minimist')
 const hap = require('hap-nodejs')
 const CameraAccessory = require('./CameraAccessory')(hap, hap.Accessory, console.log)
+const _ = require('lodash');
 
 let conf = {}
 const argv = minimist(process.argv.slice(2))
@@ -11,6 +12,13 @@ if (configFile) {
     conf = require(configFile)
   } catch (e) { if (e.code !== 'MODULE_NOT_FOUND') { throw e } }
 }
+
+_.defaults(conf, {
+    id: process.env.HOMEBRIDGE_CAMERA_RPI_ID,
+    name: process.env.HOMEBRIDGE_CAMERA_RPI_NAME,
+    pincode: process.env.HOMEBRIDGE_CAMERA_RPI_PINCODE,
+    username: process.env.HOMEBRIDGE_CAMERA_RPI_USERNAME,
+});
 
 console.log('HAP-NodeJS starting...')
 
