@@ -18,7 +18,11 @@ _.defaults(conf, {
     name: process.env.HOMEBRIDGE_CAMERA_RPI_NAME,
     pincode: process.env.HOMEBRIDGE_CAMERA_RPI_PINCODE,
     username: process.env.HOMEBRIDGE_CAMERA_RPI_USERNAME,
+}, {
+    pincode: '031-45-154',
+    username: 'EC:23:3D:D3:CE:CE',
 });
+console.log(JSON.stringify(conf));
 
 console.log('HAP-NodeJS starting...')
 
@@ -26,10 +30,10 @@ hap.init()
 
 const cameraAccessory = new CameraAccessory(conf)
 
-const pincode = conf.pincode || '031-45-154'
+const pincode = conf.pincode;
 
 cameraAccessory.publish({
-  username: conf.username || 'EC:23:3D:D3:CE:CE',
+  username: conf.username,
   pincode: pincode,
   category: hap.Accessory.Categories.CAMERA
 }, true)
