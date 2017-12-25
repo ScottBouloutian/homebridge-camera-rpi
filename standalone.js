@@ -20,9 +20,9 @@ _.defaults(conf, {
     username: process.env.HOMEBRIDGE_CAMERA_RPI_USERNAME,
 }, {
     pincode: '031-45-154',
+    port: 51826,
     username: 'EC:23:3D:D3:CE:CE',
 });
-console.log(JSON.stringify(conf));
 
 console.log('HAP-NodeJS starting...')
 
@@ -33,9 +33,10 @@ const cameraAccessory = new CameraAccessory(conf)
 const pincode = conf.pincode;
 
 cameraAccessory.publish({
-  username: conf.username,
-  pincode: pincode,
-  category: hap.Accessory.Categories.CAMERA
+    category: hap.Accessory.Categories.CAMERA,
+    pincode: pincode,
+    port: conf.port,
+    username: conf.username,
 }, true)
 
 console.log('Scan this code with your HomeKit App on your iOS device to pair with Camera:')
