@@ -12,6 +12,9 @@ RUN apt-get install -y python libudev-dev
 RUN apt-get install -y avahi-daemon avahi-discover libnss-mdns libavahi-compat-libdnssd-dev
 RUN apt-get install -y v4l-utils
 
+# Install yarn
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+
 # Install ffmpeg
 RUN apt-get install -y libssl-dev libcurl4-openssl-dev libjpeg-dev libx264-142 libavcodec56 libavformat56 libswscale3 libpq5
 RUN wget https://github.com/ccrisan/motioneye/wiki/precompiled/ffmpeg_3.1.1-1_armhf.deb
@@ -25,7 +28,7 @@ COPY package.json package.json
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
-RUN JOBS=MAX npm install && npm cache clean && rm -rf /tmp/*
+RUN JOBS=MAX ~/.yarn/bin/yarn --prod && ~/.yarn/bin/yarn cache clean && rm -rf /tmp/*
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
@@ -34,4 +37,4 @@ COPY . ./
 ENV INITSYSTEM=on
 
 # index.js will run when container starts up on the device
-CMD ["node", "standalone"]
+CMD ["~/.yarn/bin/yarn", "start"]
