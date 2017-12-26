@@ -4,8 +4,8 @@
   "description": "raspberry pi camera plugin for homebridge",
   "main": "index.js",
   "scripts": {
-      "start": "node standalone",
-      "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node standalone",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -25,11 +25,9 @@
   },
   "homepage": "https://github.com/moritzmhmk/homebridge-camera-rpi#readme",
   "dependencies": {
+    "hap-nodejs": "^0.4.36",
     "ip": "^1.1.5",
-    "lodash": "^4.17.4"
-  },
-  "devDependencies": {
-    "hap-nodejs": "^0.4.32",
+    "lodash": "^4.17.4",
     "minimist": "^1.2.0"
   }
 }

@@ -42,7 +42,7 @@ fast-srp-hap@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/fast-srp-hap/-/fast-srp-hap-1.0.1.tgz#377124d196bc6a5157aae5b37bf5fa35bb4ad2d9"
 
-hap-nodejs@^0.4.32:
+hap-nodejs@^0.4.36:
   version "0.4.36"
   resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.36.tgz#37073d29221023a9fb8638bfa44c01542c0540ad"
   dependencies:
